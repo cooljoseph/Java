@@ -1,0 +1,41 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.junit.platform:junit-platform-gradle-plugin:1.2.0"
+    }
+
+    ext {
+        versions = [
+                junit: '5.6.2'
+        ]
+    }
+}
+
+plugins {
+    id 'java'
+}
+
+group 'io.github.cooljoseph'
+version '1.0.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+test {
+    useJUnitPlatform()
+}
+
+dependencies {
+    compile "com.opencsv:opencsv:3.8"
+
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:${versions.junit}"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:${versions.junit}"
+    testImplementation "org.assertj:assertj-core:3.14.0"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-api:${versions.junit}"
+}
